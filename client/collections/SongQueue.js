@@ -6,5 +6,6 @@ var SongQueue = Songs.extend({
 
   playFirst: function() {
     this.at(0).play();
+    this.remove(this.at(0));
   }
 });
