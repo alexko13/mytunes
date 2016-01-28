@@ -30,8 +30,13 @@ var AppModel = Backbone.Model.extend({
     }, this);
 
     params.library.on('ended', function(song) {
+      //increment song playCount
+      song.incrementCount();
+      console.log(song.get('playCount'));
+      //remove song from queue
       var queue = this.get('songQueue');
       queue.remove(song);
+      //play first song
       if( queue.length > 0) {
         queue.playFirst();
       }
