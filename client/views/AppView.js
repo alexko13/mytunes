@@ -13,13 +13,11 @@ var AppView = Backbone.View.extend({
     }, this);
 
     this.model.get('songQueue').on('add', function(song) {
-      //update queueView
-      console.log(this.songQueueView.$el);
-      this.songQueueView.$el.append(new SongQueueEntryView({model: song}).render());
+      this.songQueueView.render();
     }, this);
 
     this.model.get('songQueue').on('remove', function(song) {
-      //update queueView
+      this.songQueueView.render();
     }, this);
   },
 
