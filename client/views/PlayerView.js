@@ -9,7 +9,6 @@ var PlayerView = Backbone.View.extend({
 
   initialize: function() {
     this.$el.children(":first").on('ended', function() {
-      this.$el.children().last().remove();
       this.model.ended();
     }.bind(this));
   },
@@ -20,6 +19,7 @@ var PlayerView = Backbone.View.extend({
   },
 
   render: function(){
+    this.$el.children("p").detach();
     this.$el.children(":first").attr('src', this.model ? this.model.get('url') : '');
     return this.$el.append(this.template(this.model.attributes));
   }

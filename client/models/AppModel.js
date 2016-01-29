@@ -17,7 +17,6 @@ var AppModel = Backbone.Model.extend({
 
     params.library.on('play', function(song){
       //check if currentSong !exists
-      console.log('currentSong: ', this.get('currentSong'));
       if(!this.get('isPlaying')) {
         this.set('currentSong', song);
         this.set('isPlaying', true);
@@ -40,6 +39,7 @@ var AppModel = Backbone.Model.extend({
       //increment song playCount
       song.incrementCount();
       //clear currentSong
+      this.set('currentSong', new SongModel());
       this.set('isPlaying', false);
       //remove song from queue
       var queue = this.get('songQueue');
